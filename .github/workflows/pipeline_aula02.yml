@@ -19,8 +19,22 @@ jobs:
 
       - name: Instalar dependências
         run: npm install
+  
+  test:
+    runs-on: ubuntu-latest
 
-      - name: Rodar testes
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Instalar Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependências
+        run: npm install
+        
+      - name: Roda testes
         run: npm test
 
   deploy:
