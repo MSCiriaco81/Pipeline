@@ -27,7 +27,7 @@ jobs:
         run: npm run build --if-present
 
       - name: Gerar Artefato ZIP
-        run: zip -r pipeline-demo.zip .
+        run: zip -r pipeline-demo.zip . -x "node_modules/*" ".git/*"
 
       - name: Publicar Artefato
         uses: actions/upload-artifact@v4
