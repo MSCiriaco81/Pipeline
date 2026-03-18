@@ -2,8 +2,9 @@ name: Pipeline para Dev
 
 on:
   push:
-    branches:
-      - dev
+    branches: [dev]
+  pull_request:
+    branches: [main]
 
 jobs:
   build:
