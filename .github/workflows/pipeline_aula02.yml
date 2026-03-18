@@ -12,13 +12,5 @@ jobs:
     environment: production
 
     steps:
-      - name: Baixar Artefato
-        uses: actions/download-artifact@v4
-        with:
-          name: codigo-buildado
-
-      - name: Extrair Artefato
-        run: unzip -o pipeline-demo.zip
-
       - name: Simular deploy
         run: echo "Deploy realizado com sucesso"
