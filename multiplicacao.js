@@ -1,5 +1,5 @@
 function multiplicacao(a, b) {
-    return a * c;
+    return a * b;
 }
 
 module.exports = { multiplicacao };
