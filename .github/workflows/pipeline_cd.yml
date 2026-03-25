@@ -2,9 +2,38 @@ name: Pipeline Main da produção
 
 on:
   push:
-    branches: [dev]
+    branches: [main]
   
 jobs:
+  quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Instalar node
+        uses: actions/setup-node@v4
+        with:
+          node version: 24
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Rodar lint
+        run: npm run lint
+
+      - name: Run Coverage
+        run: npm run test
+
+      - name: Análise com SonarCloud
+        uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          args: >
+            -Dsonar.projectKey=MSCiriaco81_Pipeline
+            -Dsonar.organization=msciriaco81
+          env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   deploy:
     runs-on: ubuntu-latest
     environment: production
