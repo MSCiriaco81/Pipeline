@@ -2,7 +2,7 @@ name: Pipeline para Dev
 
 on:
   push:
-    branches: [dev]
+    branches: [main]
   pull_request:
     branches: [main]
 
@@ -27,6 +27,15 @@ jobs:
 
       - name: Run Coverage
         run: npm run test
+
+      - name: Análise com SonarCloud
+        uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          args: >
+            -Dsonar.projectKey=MSCiriaco81_Pipeline
+            -Dsonar.organization=msciriaco81
+          env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   build:
     runs-on: ubuntu-latest
