@@ -2,7 +2,7 @@ name: Pipeline Main da produção
 
 on:
   push:
-    branches: [main]
+    branches: [dev]
   
 jobs:
   deploy:
