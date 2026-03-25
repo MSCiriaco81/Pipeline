@@ -30,37 +30,10 @@ jobs:
       - name: Rodar testes
         run: npm test
 
-  build:
-    name: Build da aplicação
+  test:
+    name: Teste final
     runs-on: ubuntu-latest
     needs: quality
-
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'npm'
-
-      - name: Instalar dependências
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
-      - name: Upload do build (artifact)
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: dist
-
-  test:
-    name: Teste pós-build
-    runs-on: ubuntu-latest
-    needs: build
 
     steps:
       - name: Checkout do código
