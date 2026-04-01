@@ -66,7 +66,7 @@ jobs:
             -Dsonar.projectKey=MSCiriaco81_Pipeline
             -Dsonar.organization=msciriaco81
         env: 
-          SONAR_TOKEN: ${{ SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
  
 
