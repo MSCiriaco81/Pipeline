@@ -31,7 +31,8 @@ jobs:
 
       - name: Scan for secrets
         run: |
-          curl -sSfL https://raw.githubusercontent.com/gitleaks/gitleaks/master/install.sh | sh
+          wget https://github.com/gitleaks/gitleaks/releases/download/v8.18.2/gitleaks-linux-amd64 -O gitleaks
+          chmod +x gitleaks
           ./gitleaks detect --source . --verbose
 
       - name: Verificar vulnerabilidade
